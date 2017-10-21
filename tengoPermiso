@@ -1,0 +1,17 @@
+#!/bin/bash
+
+#
+#Script sencillo para saber si mi archivo tiene
+#un permiso determinado (lectura, escritura o ejecución)
+#
+
+function Permisos(){
+
+if [ -[r,w,x] nombreFichero ]; then
+   echo "Me puedes_leer_escribir_ejecutar"
+else
+   echo "¡Error!
+        (Ejecuta ls -l nombreFichero para ver los permisos)"
+fi
+
+}
