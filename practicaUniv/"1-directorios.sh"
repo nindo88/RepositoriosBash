@@ -1,0 +1,67 @@
+#!/bin/bash
+
+DIRECTORIO1=./bin/
+DIRECTORIO2=./doc/
+DIRECTORIO3=./script/
+
+COMANDO="/bin/mkdir $DIRECTORIO1 $DIRECTORIO2 $DIRECTORIO3"
+
+function estructuraDirectorio(){
+
+if $COMANDO
+   then
+   echo "Los directorios $DIRECTORIO1 $DIRECTORIO2 $DIRECTORIO3 fueron creados."
+else
+   echo "Saliendo de la aplicacion."
+   exit 1
+fi
+
+echo "Creando los enlaces simbólicos..."
+ln -s /etc ./etc		
+ln -s /var/log ./log
+            
+}
+
+function copiarArchivos(){
+
+cp -r *.sh ./script/
+cp -r ./script/*.* ./bin/
+
+}
+
+function darPermisos(){
+
+if [ -x $DIRECTORIO3 ]; then
+   echo "Los archivos de $DIRECTORIO3 ya son ejecutables."
+   chmod ugo+x $DIRECTORIO3/*.sh
+else
+   echo "Error! No tengo permiso de acceso a $DIRECTORIO3"
+   exit 2
+fi
+
+if [ -x $DIRECTORIO1 ]; then
+   chmod 644 $DIRECTORIO1/*.sh
+   echo "Los archivos de $DIRECTORIO1 ya son ejecutables."
+   chmod ugo+x $DIRECTORIO1/*.sh
+else
+   echo "Error! No tengo permiso de acceso a $DIRECTORIO1"
+   exit 2
+fi
+}
+
+echo "Creando los directorios..."
+estructuraDirectorio
+
+echo "Moviendo los archivos a los directorios $DIRECTORIO1 $DIRECTORIO3..."
+copiarArchivos
+
+echo "Otorgando permisos:"
+darPermisos
+
+#
+#falta agregar al PATH los directorios
+#
+
+
+
+exit 0
