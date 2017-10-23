@@ -1,0 +1,38 @@
+#!/bin/bash
+
+#
+#Primero armamos los parámetros de la búsqueda y se los pasará por consola
+#
+
+DIRECTORIO=$1;
+ARCHIVO=$2
+
+#
+#Si no nos pasa ningun parámetro el programa se cierra
+#
+
+if [ $# -eq 0 ]; then
+   echo "Necesito parámetros para ejecutarme."
+   exit 1
+elif [ $# -gt 2 ]; then
+   echo "Solo necesito dos parámetros."
+   exit 2
+else
+   echo "Cantidad de parámetros correcta."
+fi
+
+
+#
+#Validamos la existencia del directorio y buscamos los archivos.
+#
+
+if [ -d $DIRECTORIO ]; then
+   echo "El directorio existe y es válido"
+   ( find $DIRECTORIO -type f -iname "$ARCHIVO" ) && 
+   ( find $DIRECTORIO -type f -iname "$ARCHIVO" ) > $HOME/doc/"archivo1-<$ARCHIVO>en<$DIRECTORIO>"
+else
+   echo "No existe el directorio"
+   exit 3
+fi
+
+exit 0
