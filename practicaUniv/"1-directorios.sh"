@@ -1,3 +1,29 @@
+#
+#DOCUMENTACIÓN
+#
+#Autor: Sabadini, Pablo
+#Fecha: 23/10/2017 Version 1.0
+#Descripción:
+#
+# Escribir un script 1-directorio.sh que genere la siguiente estructura de directorios:
+#
+#bin
+#doc
+#script
+#
+#etc enlace a /etc
+#log enlace a /var/log
+#
+#Este script deberá controlar que los directorios no existan y deberá informar al usuario cada uno de 
+#los directorios creados.-
+#
+#Luego deberá mover todos los scripts de esta actividad al directorio script, agregar permisos de
+#ejecución a los archivos dentro de los directorios bin y script y agregar a la variable PATH
+#estos directorios para luego finalizar.-
+#
+#
+
+
 #!/bin/bash
 
 DIRECTORIO1=./bin/
