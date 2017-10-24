@@ -1,10 +1,27 @@
+#
+#DOCUMENTACIÓN:
+#
+#Autor: Sabadini, Pablo
+#Fecha: 23/10/2018 Version 1.0
+#Descripción:
+#
+#Escribir un script 4-buscarArchivo.sh que busque de manera recursiva en un directorio recibido como
+#parámetro todos los archivos con una determinada extensión. también recibido como parámetro.
+#El script deberá verificar que sea un directorio válido, exista y mostrar por salida estandar los
+#los archivos encontrados con su ruta completa o absoluta. Además deberá generar dentro del directorio
+#doc un archivo conteniendo la misma información. El archivo generado deberá llamarse de la siguiente
+#manera:
+#
+#archivos-<extension>en<directorioBusqueda>
+#
+
 #!/bin/bash
 
 #
 #Primero armamos los parámetros de la búsqueda y se los pasará por consola
 #
 
-DIRECTORIO=$1;
+DIRECTORIO=$1
 ARCHIVO=$2
 
 #
@@ -15,11 +32,15 @@ if [ $# -eq 0 ]; then
    echo "Necesito parámetros para ejecutarme."
    exit 1
 elif [ $# -gt 2 ]; then
-   echo "Solo necesito dos parámetros."
+   echo "Solo requiero dos parámetros."
    exit 2
 else
    echo "Cantidad de parámetros correcta."
 fi
+
+#
+#Creamos el documento donde se va a guardar la información (falta agregar este paso)
+#
 
 
 #
@@ -29,7 +50,7 @@ fi
 if [ -d $DIRECTORIO ]; then
    echo "El directorio existe y es válido"
    ( find $DIRECTORIO -type f -iname "$ARCHIVO" ) && 
-   ( find $DIRECTORIO -type f -iname "$ARCHIVO" ) > $HOME/doc/"archivo1-<$ARCHIVO>en<$DIRECTORIO>"
+   ( find $DIRECTORIO -type f -iname "$ARCHIVO" ) > #falta agregar la redirección
 else
    echo "No existe el directorio"
    exit 3
