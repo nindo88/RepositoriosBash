@@ -1,3 +1,22 @@
+#
+#DOCUMENTACIÓN
+#
+#Autor: Sabadini, Pablo
+#Fecha: 23/10/2017 Version 1.0
+#Descripción:
+#
+#Escribir un script 2-info.sh que genere un archivo INFO.sistema (ubicado en directorio doc antes
+#generado) que reuna información del sistema que utilizan. El archivo debe incluir la siguiente
+#información, delimitada por títulos descriptivos.-
+#
+#Fecha del reporte. (date,uptime)
+#Versión del equipo y kernel (uname,hostname)
+#Versión del S.O.(lsb-release)
+#Hardware: Procesador, memoria y periféricos. (proc/cpuinfo,memory,free,lscpu,lsusb,lspci,lsblk)
+#Espacio de disco y particiones montadas (fdisk,du,etc/fstab,blkid)
+#
+# 
+
 #!/bin/bash
 
 #
